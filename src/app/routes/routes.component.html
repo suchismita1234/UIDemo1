@@ -1,0 +1,114 @@
+<div class="container-fluid" style="position: relative; height: 100%">
+        <div class="row" style="height: 100%">
+            <section>
+                <div class="panel panel-default" style="margin: 0">
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <a routerLink="/home" style='text-decoration:none;'>
+                                    <h4 style="margin: 12px 0px;"><span style="color: #fff;background: #ff3d00; padding: 1px 1px 1px 5px;">MARSEILLE2</span><span style="color: #ff3d00;background: #fff; padding: 1px 5px 1px 1px; text-shadow: 0px 1px #ff3d00;">MANHATTAN</span></h4>
+                                	</a>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="row">
+                                        <div class="col-lg-1 pull-right">
+                                            <button type="submit" id="submit" class="btn btn-md btn-regular" title="Find Route Options"><i class="zmdi zmdi-boat"></i> <i class="glyphicon glyphicon-share-alt" style="font-size: 10px;"></i></button>
+                                        </div>
+                                        <div class="col-lg-3 pull-right">
+                                            <div class="wrap-input100">
+                                                <input class="input100" id="end" type="text" name="Destination" placeholder="Enter Destination">
+                                                <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
+                                                <span class="errorMsg">Enter value to proceed</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-1 text-center pull-right">
+                                            <button class="btn btn-regular btn-md"><i class="zmdi zmdi-swap"></i></button>
+                                        </div>
+                                        <div class="col-lg-3 pull-right">
+                                            <div class="wrap-input100">
+                                                <input class="input100" id="start" type="text" name="Origin" placeholder="Enter Origin">
+                                                <span class="focus-input100" data-placeholder="&#xf299;"></span>
+                                                <span class="errorMsg">Enter value to proceed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <div class="col-md-3 sidePanel">
+                 <div class="card"> <!--This div needs to be added in case of ng-repeat -->
+                    <div class="card-title activator grey-text text-lighten-5">Route 1<i class="material-icons pull-right"><i class="zmdi zmdi-long-arrow-right"></i></i></div>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red" title="Select Route"><i class="material-icons"><span class="glyphicon glyphicon-share-alt"></span></i></a>
+                    <div class="card-content">
+                        <ul class="list-group" id="listDetails">
+                            <li class="list-group-item"> Delhi</li>
+                            <li class="list-group-item"> Marseille</li>
+                            <li class="list-group-item"> 3 Days 23hrs 16mins</li>
+                            <li class="list-group-item"> 23055kms</li>
+                            <li class="list-group-item cost"> &euro; 24,718 - &euro; 77,160</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title activator grey-text text-lighten-5">Route 2<i class="material-icons pull-right"><i class="zmdi zmdi-long-arrow-right"></i></i></div>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red" title="Select Route"><i class="material-icons"><span class="glyphicon glyphicon-share-alt"></span></i></a>
+                    <div class="card-content">
+                        <ul class="list-group" id="listDetails">
+                            <li class="list-group-item"> Delhi</li>
+                            <li class="list-group-item"> Marseille</li>
+                            <li class="list-group-item"> 3 Days 22hrs 07mins</li>
+                            <li class="list-group-item"> 22065kms</li>
+                            <li class="list-group-item cost"> &euro; 23,966 - &euro; 73,582</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title activator grey-text text-lighten-5">Route 3<i class="material-icons pull-right"><i class="zmdi zmdi-long-arrow-right"></i></i></div>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red" title="Select Route"><i class="material-icons"><span class="glyphicon glyphicon-share-alt"></span></i></a>
+                    <div class="card-content">
+                        <ul class="list-group" id="listDetails">
+                            <li class="list-group-item"> Delhi</li>
+                            <li class="list-group-item"> Marseille</li>
+                            <li class="list-group-item"> 3 Days 23hrs 50mins</li>
+                            <li class="list-group-item"> 25076kms</li>
+                            <li class="list-group-item cost"> &euro; 24,843 - &euro; 66,547</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="capsuleWrapper row">
+                    <div class="capsule roadWay">
+                        <span class="orPort">DELHI</span>
+                        <span class="orPortDate">30/05/18</span>
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                        <span class="PortAArrival">BOMBAY</span> 
+                        <span class="PortADateArrival">30/06/18</span>
+                        <span class="price">&euro; 9458</span>
+                    </div>
+                    <div class="capsule shipWay">
+                        <span class="PortADeparture">BOMBAY</span>
+                        <span class="PortADateDeparture">01/06/18</span>
+                        <i class="zmdi zmdi-boat"></i>
+                        <span class="PortBArrival">ROTTERDAM</span>
+                        <span class="PortBDateArrival">02/06/18</span>
+                        <span class="price">&euro; 11782</span>
+                    </div>
+                    <div class="capsule roadWay">
+                        <span class="PortBDeparture">ROTTERDAM</span>
+                        <span class="PortBDateDeparture">03/06/18</span>
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                        <span class="desPort">Marseille</span> 
+                        <span class="desPortDate">03/06/18</span>
+                        <span class="price">&euro; 8458</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

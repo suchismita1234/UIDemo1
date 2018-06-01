@@ -1,0 +1,71 @@
+<style>
+.input100{
+	color:#ccc;
+}
+</style>
+<div class="container-fluid">
+	<div class="row coverScreen">
+		<div id="intro">
+	        <div class="backDrop"></div>
+	        <div class="intro-body">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-md-10 col-md-offset-1" style="margin-top: 15%">
+	                    	<h1>MARSEILLE2<span class="brand-heading">MANHATTEN</span></h1>
+	                    	<p class="intro-text">Shipping Simplified At A Click {{parentData}}</p>
+	                        <!--Search form -->
+	                        <form #locationForm="ngForm" (ngSubmit)="onSubmit(locationForm)">
+	                        <div class="row">
+	                            <div class="col-md-5">
+	                                <div class="wrap-input100 form-group">
+	                       <!--                 <input class="input100" id="start" type="text" name="origin"  placeholder="Enter Origin" required>-->
+	                              <input type="text" class="input100" name="origin" #origin="ngModel" [(ngModel)]="location.origin" placeholder="Enter Origin" required>
+
+	                                        <span class="focus-input100" data-placeholder="&#xf299;"></span>
+	                                        <span class="errorMsg">Enter value to proceed</span>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-5 form-group">
+	                                <div class="wrap-input100">
+	                                        <input type="text" class="input100" name="destination" #origin="ngModel" [(ngModel)]="location.destination" placeholder="Enter destination" required>
+<span class="focus-input100" data-placeholder="&#xf1ab;">
+	
+</span>
+	                                        <span class="errorMsg">Enter value to proceed</span>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-1 form-group">
+	                            <!--routerLink="/routes" -->
+	                                <button  type="submit"  id="findOptions" class="btn btn-lg btn-regular"><i class="zmdi zmdi-boat" style="font-size"></i></button>
+	                            </div>
+	                        </div>
+	                    </form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+<!--form #values="ngForm" (ngSubmit)="getRoutes()" name="ngForm">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="wrap-input100 form-group">
+                    <input class="input100 form-group" [(ngModel)]="origin" id="start" type="text" name="{{origin}}"  placeholder="Enter Origin" required>
+
+                    <span class="focus-input100" data-placeholder="&#xf299;"></span>
+                    <span class="errorMsg">Enter value to proceed</span>
+            </div>
+        </div>
+        <div class="col-md-5 form-group">
+            <div class="wrap-input100">
+                    <input class="input100" [(ngModel)]="destination" id="end" type="text" name="{{destination}}" placeholder="Enter Destination" required>
+                    <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
+                    <span class="errorMsg">Enter value to proceed</span>
+            </div>
+        </div>
+        <div class="col-md-1 form-group">
+            <button type="submit" routerLink="/routes"  id="findOptions" class="btn btn-lg btn-regular"><i class="zmdi zmdi-boat" style="font-size"></i></button>
+        </div>
+    </div>
+</form-->
