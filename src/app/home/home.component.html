@@ -14,12 +14,12 @@
 	                    	<h1>MARSEILLE2<span class="brand-heading">MANHATTEN</span></h1>
 	                    	<p class="intro-text">Shipping Simplified At A Click {{parentData}}</p>
 	                        <!--Search form -->
-	                        <form #locationForm="ngForm" (ngSubmit)="onSubmit(locationForm)">
+	                        <form #locationForm="ngForm" (ngSubmit)="onSubmit($event)">
 	                        <div class="row">
 	                            <div class="col-md-5">
 	                                <div class="wrap-input100 form-group">
 	                       <!--                 <input class="input100" id="start" type="text" name="origin"  placeholder="Enter Origin" required>-->
-	                              <input type="text" class="input100" name="origin" #origin="ngModel" [(ngModel)]="location.origin" placeholder="Enter Origin" required>
+	                              <input type="text" class="input100" required name="origin" id='origin' #origin="ngModel" [(ngModel)]="location.origin" placeholder="Enter Origin" >
 
 	                                        <span class="focus-input100" data-placeholder="&#xf299;"></span>
 	                                        <span class="errorMsg">Enter value to proceed</span>
@@ -27,7 +27,7 @@
 	                            </div>
 	                            <div class="col-md-5 form-group">
 	                                <div class="wrap-input100">
-	                                        <input type="text" class="input100" name="destination" #origin="ngModel" [(ngModel)]="location.destination" placeholder="Enter destination" required>
+	                                        <input type="text" class="input100" name="destination" id="destination" #destination="ngModel" [(ngModel)]="location.destination" placeholder="Enter destination" required>
 <span class="focus-input100" data-placeholder="&#xf1ab;">
 	
 </span>
@@ -36,7 +36,8 @@
 	                            </div>
 	                            <div class="col-md-1 form-group">
 	                            <!--routerLink="/routes" -->
-	                                <button  type="submit"  id="findOptions" class="btn btn-lg btn-regular"><i class="zmdi zmdi-boat" style="font-size"></i></button>
+	                                <button  type="submit"  id="findOptions" class="btn btn-lg btn-regular">
+	                                <i class="zmdi zmdi-boat" style="font-size"></i></button>
 	                            </div>
 	                        </div>
 	                    </form>
@@ -45,6 +46,30 @@
 	            </div>
 	        </div>
 	    </div>
+
+<div class="col-sm-6 col-sm-offset-3 bottomPanel">
+                <div class="row">
+                    <div class="panel">
+                        <div class="IconSpan" style="background-color:#d27502">
+                            <i class="zmdi zmdi-navigation"></i>
+                        </div>
+                        <div class="IconDescSpan">
+                            <p>SMART TRACKING</p>
+                            <hr>
+                            <span>Coming Soon <i class="fa fa-spinner loadingSpeedIcon" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="IconSpan" style="background-color: #0298d2">
+                            <i class="fa fa-ship" aria-hidden="true"></i>
+                        </div>
+                        <div class="IconDescSpan">
+                            <p>SMART SI</p>
+                            <hr>
+                            <span>Coming Soon <i class="fa fa-spinner loadingSpeedIcon" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 	</div>
 </div>
 <!--form #values="ngForm" (ngSubmit)="getRoutes()" name="ngForm">

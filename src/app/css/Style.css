@@ -95,7 +95,7 @@ body{
 }
 
 .input100 {
-  font-size: 14px;
+    font-size: 14px;
     color: #fff;
     line-height: 1.2;
     border: none;
@@ -304,6 +304,59 @@ body{
     font-size: 14px;
 }
 
+.bottomPanel{
+    position: fixed;
+    bottom: 0;
+}
+
+.bottomPanel .panel{
+    height: 65px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    border-radius: 0px;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.bottomPanel div.IconSpan{
+    height: 100%;
+    width: 15%;
+    color: #fff;
+    padding: 5px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.bottomPanel div.IconDescSpan{
+    height: 100%;
+    width: 35%;
+    color: #fff;
+    padding: 10px 16px;
+}
+
+.bottomPanel div.IconDescSpan p{
+    font-size: 16px;
+    margin: 0;
+}
+
+.bottomPanel div.IconDescSpan span{
+    text-align: right;
+    display: inline-block;
+    width: 100%;
+}
+
+.bottomPanel div.IconDescSpan hr{
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-top: 1px solid #272727;
+}
+
+.loadingSpeedIcon{
+    -webkit-animation: fa-spin 10s infinite linear;
+    animation: fa-spin 10s infinite linear;
+}
+
 .sidePanel{
     /* position: fixed; */
     background: #f7f7f7;
@@ -322,13 +375,13 @@ body{
 
 .capsuleWrapper{
     position: relative;
-    padding: 50px 55px 70px;
+    padding: 70px 55px 50px;
     background: #f7f7f7;
     margin: 10px -5px;
     box-shadow: 0px 2px 7px 0px #d6d6d6;
 }
 
-.capsule{
+/* .capsule{
     width: calc(100% / 3 - 160px / 3);
     float: left;
     text-align: center;
@@ -451,6 +504,149 @@ body{
 .price{
     position: absolute;
     bottom: -45px;
+    right: 50%;
+    color: #000000;
+    font-size: 14px;
+    transform: translateX(50%);
+    font-family: robotoregular;
+} */
+
+.paths{
+    width: calc(100% / 3 - 160px / 3);
+    font-size: 20px;
+    float: left;
+    padding: 1px;
+    position: relative;
+    margin-right: 80px;
+    text-align: center;
+}
+
+.roadPath{
+    color: #d27502;
+}
+
+.shipPath{
+    color: #0298d2;
+}
+
+.paths:last-child{
+    margin: 0;
+}
+
+.paths .fa-clock-o{
+    margin-top: 15px;
+}
+
+.paths .zmdi-truck, .paths .zmdi-boat{
+    color: #1d1d1d;
+    font-size: 27px;
+}
+
+.paths .zmdi-truck:after, .paths .zmdi-boat:after{
+    position: absolute;
+    content: "";
+    width: calc(100% - 36px);
+    height: 0px;
+    background: transparent;
+    border: 1px solid #1d1d1d;
+    left: 18px;
+    bottom: 10px;
+    /* transform: translateY(-50%); */
+}
+
+.paths:not(:last-child):after{
+    position: absolute;
+    content: "";
+    width: 80px;
+    height: 0px;
+    background: transparent;
+    border: 1px dashed #1d1d1d;
+    right: -80px;
+    bottom: 10px;
+    /* transform: translateY(-50%); */
+}
+
+.orPortDate{
+    position: absolute;
+    top: -30px;
+    left: -5px;
+    color: #000000;
+    font-size: 14px;
+    transform: rotate(-45deg);
+    font-family: robotoregular;
+}
+
+.PortADateArrival, .PortBDateArrival{
+    position: absolute;
+    top: -30px;
+    right: -35px;
+    color: #000000;
+    font-size: 14px;
+    transform: rotate(-45deg);
+    font-family: robotoregular;
+}
+
+.PortADateDeparture, .PortBDateDeparture{
+    position: absolute;
+    top: -30px;
+    left: -5px;
+    color: #000000;
+    font-size: 14px;
+    transform: rotate(-45deg);
+    font-family: robotoregular;
+}
+
+.desPortDate{
+    position: absolute;
+    top: -30px;
+    right: -35px;
+    color: #000000;
+    font-size: 14px;
+    transform: rotate(-45deg);
+    font-family: robotoregular;
+}
+
+.orPort{
+    position: absolute;
+    bottom: -35px;
+    left: -15px;
+    color: #191919;
+    font-size: 16px;
+    font-family: robotoregular;
+    text-transform: uppercase;
+}
+
+.desPort{
+    position: absolute;
+    bottom: -35px;
+    right: -15px;
+    color: #191919;
+    font-size: 16px;
+    font-family: robotoregular;
+    text-transform: uppercase;
+}
+
+.PortAArrival, .PortBArrival{
+    position: absolute;
+    bottom: -35px;
+    right: -10px;
+    color: #191919;
+    font-size: 12px;
+    font-family: robotoregular;
+}
+
+.PortADeparture, .PortBDeparture{
+    position: absolute;
+    bottom: -35px;
+    left: -10px;
+    color: #191919;
+    font-size: 12px;
+    font-family: robotoregular;
+}
+
+.price{
+    position: absolute;
+    bottom: -14px;
     right: 50%;
     color: #000000;
     font-size: 14px;
@@ -649,12 +845,18 @@ span.multiselect-native-select select {
     background: #191919;
 }
 
-.card .card-title.activator {
+.card .card-title.active {
   cursor: pointer;
+  background: #002f88;
 }
 
 .card .card-title i{
-    color: #ff3d00;
+    display: none;
+}
+
+.card .card-title.active i{
+    color: #fff;
+    display: inline-block;
 }
 
 .card.small, .card.medium, .card.large {
@@ -866,26 +1068,32 @@ span.multiselect-native-select select {
 }
 
 .card #listDetails li:first-child:before {
-    content: "\f299";
+    content: "\f21a";
+    font-family: 'FontAwesome';
 }
 
 .card #listDetails li:nth-child(2):before {
-    content: "\f1ab";
+    content: "\f299";
     margin-left: -23px;
 }
 
 .card #listDetails li:nth-child(3):before {
-    content: '\f337';
+    content: "\f1ab";
+    margin-left: -23px;
 }
 
 .card #listDetails li:nth-child(4):before {
+    content: '\f337';
+}
+
+.card #listDetails li:nth-child(5):before {
     content: "\e024";
     font-family: 'Glyphicons Halflings';
     font-size: 12px;
     margin-top: 1px;
 }
 
-.card #listDetails li:nth-child(5):before {
+.card #listDetails li:nth-child(6):before {
     content: '\f19a';
     margin-left: -23px;
     font-size: 16px;
@@ -894,7 +1102,7 @@ span.multiselect-native-select select {
 
 .card #listDetails li.cost{
     font-family: arial;
-    color: #1f68f1;
+    color: #191919;
     font-weight: bold;
     font-size: 14px;
 }
@@ -1310,3 +1518,95 @@ button.btn-floating {
 }
 
 /* Card styles End*/
+
+/* tab style start */
+.custom-tabs{
+    border: none;
+}
+
+.custom-tabs>li>a{
+    padding: 6px 26px;
+    border-radius: 0;
+    background-color: #eee;
+    border: 0px;
+    color: #1d1d1d;
+    font-size: 14px;
+}
+
+.custom-tabs>li.active>a, .custom-tabs>li.active>a:focus, .custom-tabs>li.active>a:hover{
+    border: 0px;
+    color: #fff;
+    background: #002f88;
+}
+
+.custom-tab-content{
+    border: 1px solid #eee;
+    padding: 20px 15px;
+}
+/* tab style end */
+
+/* form elements start */
+.custom-tab-content input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(3em + 1px);
+  margin: 0 0 1.5em;
+  padding: 1em;
+  border: 1px solid #0298d2;
+  background: #fff;
+  resize: none;
+  outline: none;
+  font-family: robotoregular;
+}
+
+.custom-tab-content input[type="text"][required]:focus {
+  border-color: #00bafa;
+}
+.custom-tab-content input[type="text"][required]:focus + label[placeholder]:before {
+  color: #00bafa;
+}
+.custom-tab-content input[type="text"][required]:focus + label[placeholder]:before,
+.custom-tab-content input[type="text"][required]:valid + label[placeholder]:before {
+  transition-duration: .2s;
+  transform: translate(0, -1.35em) scale(0.9, 0.9);
+     font-size: 16px;
+     font-weight: bold;
+    font-family: arial;
+}
+
+.custom-tab-content input[type="text"][required]:invalid + label[placeholder][alt]:before {
+  content: attr(alt);
+}
+
+.custom-tab-content input[type="text"][required] + label[placeholder] {
+  display: block;
+  pointer-events: none;
+  line-height: 1em;
+  margin-top: calc(-3.4em - 2px);
+  margin-bottom: calc((3em - 1em) + 2px);
+}
+
+.custom-tab-content input[type="text"][required] + label[placeholder]:before {
+  content: attr(placeholder);
+  display: inline-block;
+  margin: 0px calc(1em + 2px);
+  padding: 0 2px;
+  white-space: nowrap;
+  transition: 0.3s ease-in-out;
+  background-image: linear-gradient(to bottom, #fff, #fff);
+  background-size: 100% 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: robotoregular;
+    color: #191919;
+    font-weight: normal;
+    font-size: 14px;
+}
+/* form elements end */
+  
+Click here to Reply or Forward
+14.5 GB (96%) of 15 GB used
+Manage
+Terms - Privacy
+Last account activity: 0 minutes ago
+Open in 1 other location  Details

@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
 	ngOnInit() {	
 	  this.location = {origin: '', destination: ''};
     }
-    onSubmit(locationForm) {
-	  	//console.log(locationForm);
+    onSubmit(event) {
+	  	//constant selectedLoc = event.target.getelementById('origin');
 	  	this.origin1 = this.location.origin;
         this.dest =  this.location.destination;
         this.router.navigate(['/routes']);
