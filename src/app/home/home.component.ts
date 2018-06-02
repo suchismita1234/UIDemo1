@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouteService } from '../routes/route.service';
+import { AppService } from '../app.service';
 
 import {Router} from '@angular/router';
 
@@ -10,19 +12,37 @@ import {Router} from '@angular/router';
 export class HomeComponent implements OnInit {
 	public origin1: string;
 	public dest: string;
-
+	
 	location: any;
-    message: string;
+  //message: string;
 	  
-	constructor(private router: Router) {}
+	constructor(
+	private router: Router,
+	private Route: RouteService,
+	private apService: AppService
+
+	) {}
+
+	public message = "hello";
 
 	ngOnInit() {	
-	  this.location = {origin: '', destination: ''};
+	  this.location = {origin: 'Marseille', destination: 'Manhantten'};
     }
     onSubmit(event) {
-	  	//constant selectedLoc = event.target.getelementById('origin');
-	  	this.origin1 = this.location.origin;
+     	this.origin1 = this.location.origin;
         this.dest =  this.location.destination;
+
+       // this.getLocationList();
+
+
+
+        //RouteList Fetched From routeService
+       // this.Route.getRouteDetails(this.origin1, this.dest );
+        //console.log(this.Route.getRouteDetails(this.origin1, this.dest );
+
+        this.Route.setSearchParams(this.location);
+        //this.Route.setRouteDetails(this.Route.getRouteDetails(this.origin1, this.dest);
+
         this.router.navigate(['/routes']);
     }
 

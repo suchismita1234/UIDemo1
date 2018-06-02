@@ -12,14 +12,14 @@
 	                <div class="row">
 	                    <div class="col-md-10 col-md-offset-1" style="margin-top: 15%">
 	                    	<h1>MARSEILLE2<span class="brand-heading">MANHATTEN</span></h1>
-	                    	<p class="intro-text">Shipping Simplified At A Click {{parentData}}</p>
+	                    	<p class="intro-text">Shipping Simplified At A Click</p>
 	                        <!--Search form -->
-	                        <form #locationForm="ngForm" (ngSubmit)="onSubmit($event)">
+	                        <form #locationForm="ngForm" (ngSubmit)="onSubmit($event)" >
 	                        <div class="row">
 	                            <div class="col-md-5">
 	                                <div class="wrap-input100 form-group">
 	                       <!--                 <input class="input100" id="start" type="text" name="origin"  placeholder="Enter Origin" required>-->
-	                              <input type="text" class="input100" required name="origin" id='origin' #origin="ngModel" [(ngModel)]="location.origin" placeholder="Enter Origin" >
+	                               <input type="text" class="input100" required name="origin" id='origin' #origin="ngModel" [(ngModel)]="location.origin" placeholder="Enter Origin">
 
 	                                        <span class="focus-input100" data-placeholder="&#xf299;"></span>
 	                                        <span class="errorMsg">Enter value to proceed</span>
