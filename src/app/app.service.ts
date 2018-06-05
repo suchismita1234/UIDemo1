@@ -4,17 +4,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AppService {
+  public originList: {};
+  public destinationList: {};
 
   constructor() { }
 
-  getLocationList() {return [
-  {
-   "locationCode": "BEANR",
-   "countryName": "Belgium-Antwerp",
-   "locationType": "INLAND",
-   "latitude": "129.0",
-   "longitude": "123.0"
-	}
-	];
-}
+  getLocationList() {
+    
+        this.originList =  [{id:"INDEL", name:"Delhi"}, 
+            {id:"INCCU", name:"Kolkata"}];
+    
+    
+        this.destinationList = [{id:"FRLIO", name:"Lyon"}, 
+        {id:"FRMRS", name:"Marseille"}];  
+    
+  }
 }
