@@ -17,8 +17,7 @@ export class HomeComponent implements OnInit {
 	location: any;
 	originList: {};
 	destinationList: {};
-  //message: string;
-	 cacheLocArr: {};
+    cacheLocArr: {};
 
 	constructor(
 	private router: Router,

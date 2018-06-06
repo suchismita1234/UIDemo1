@@ -15,14 +15,13 @@ export class RoutesComponent implements OnInit {
 	public allRouteDetails: {};
 	journeyLeg: {};
 	locationSearchedObj: {};
-  locationObj:{origin: '',destination:''};
+  	public locationObj:{origin: '',destination:''};
 	chkindex: number;
    	//public searchedParam = {};
 
 
     originList:{};
     destinationList:{};
-
   
   //console.log(locationObj);
   constructor(
@@ -37,7 +36,7 @@ console.log(this.locationObj);
     this.originList = [{id:"INDEL", name:"Delhi"}, 
             {id:"INCCU", name:"Kolkata"}];
 
-  this.destinationList = [{id:"FRLIO", name:"Lyon"}, 
+  	this.destinationList = [{id:"FRLIO", name:"Lyon"}, 
         {id:"FRMRS", name:"Marseille"}];
       	
     
@@ -48,7 +47,7 @@ console.log(this.locationObj);
     
       this.allRouteDetails = data.json().list;
       this.journeyLeg= this.allRouteDetails[1].journeyLegs;
-      console.log("here");
+      
       console.log(this.allRouteDetails);//return;
    	})   
     
@@ -61,7 +60,8 @@ console.log(this.locationObj);
 
   }
 
-  findRoutes() {
+  findRoutes() {debugger;
+  console.log("find route clicked");console.log(this.locationObj);
   	this.allRouteDetails = this.Route.getRouteDetails(this.locationObj.origin, this.locationObj.destination);
   }
 }

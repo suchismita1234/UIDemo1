@@ -27,13 +27,13 @@
                                 </div>
                                 <div class="col-sm-9">
                                     <div class="col-sm-1 pull-right">
-                                        <button type="submit" id="submit" class="btn btn-md btn-regular" title="Find Route Options"><i class="zmdi zmdi-boat"></i> <i class="glyphicon glyphicon-share-alt" style="font-size: 10px;"></i></button>
+                                        <button type="submit" (click)="findRoutes()" id="submit" class="btn btn-md btn-regular" title="Find Route Options"><i class="zmdi zmdi-boat"></i> <i class="glyphicon glyphicon-share-alt" style="font-size: 10px;"></i></button>
                                     </div>
                                     <div class="col-sm-3 pull-right">
                                         <div class="wrap-input100">
-                                            <select class="input100" name="destination" >
+                                            <select class="input100" name="destination" #destination="ngModel" [(ngModel)]="locationObj.destination">
                                                 <option *ngFor="let dest of destinationList" 
-                                                [value]="this.locationObj.destination" id="this.locationObj.destination" >
+                                                [value]="locationObj.destination" id="this.locationObj.destination" >
                                                     {{dest.name}}
                                                 </option>
                                             </select>
@@ -46,9 +46,9 @@
                                     </div>
                                     <div class="col-sm-3 pull-right">
                                         <div class="wrap-input100">
-                                            <select class="input100" name="origin" >
+                                            <select class="input100" name="origin" #origin="ngModel" [(ngModel)]="locationObj.origin">
                                                 <option *ngFor="let origin of originList" 
-                                                [value]="" >
+                                                [value]="locationObj.origin" >
                                                     {{origin.name}}
                                                 </option>
                                             </select>
