@@ -10,13 +10,11 @@ export class AppService {
   constructor() { }
 
   getLocationList() {
+   
+   let headers = new Headers();
     
-        this.originList =  [{id:"INDEL", name:"Delhi"}, 
-            {id:"INCCU", name:"Kolkata"}];
-    
-    
-        this.destinationList = [{id:"FRLIO", name:"Lyon"}, 
-        {id:"FRMRS", name:"Marseille"}];  
-    
+   //return this.http.post(this.reqUrl+'journey', {headers: headers});
+   return this.http.post('http://localhost/test/routeList.php', qryParams, {headers: headers, params: qryParams});
+   
   }
 }

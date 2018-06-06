@@ -43,9 +43,9 @@ getRouteDetails(orig, dest){
    qryParams.append('startDate', '2018-05-29');
    qryParams.append('containerType','20FT');   
     
-   return this.http.post(this.reqUrl+'journey', qryParams , {headers: headers, params: qryParams});
+   //return this.http.post(this.reqUrl+'journey', qryParams , {headers: headers, params: qryParams});
    
-   //return this.http.post('http://localhost/test/routeList.php', qryParams, {headers: headers, params: qryParams});
+   return this.http.post('http://localhost/test/routeList.php', qryParams, {headers: headers});
    
    }
 }
