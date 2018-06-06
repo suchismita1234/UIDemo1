@@ -33,24 +33,23 @@ export class RoutesComponent implements OnInit {
 
 this.locationObj = this.Route.getSearchParams();
 console.log(this.locationObj);
-  debugger;
+  
     this.originList = [{id:"INDEL", name:"Delhi"}, 
             {id:"INCCU", name:"Kolkata"}];
 
   this.destinationList = [{id:"FRLIO", name:"Lyon"}, 
         {id:"FRMRS", name:"Marseille"}];
-    //console.log("inside routes get location");
-    //console.log(this.Route.getSearchParams());
-  	
-    //this.Route.locationArr;
-  	
+      	
     
     this.Route.getRouteDetails(this.locationObj.origin, this.locationObj.destination).
     subscribe(data => {
-      this.allRouteDetails = data.list;
+    	
+    	console.log(data.json().list);
+    
+      this.allRouteDetails = data.json().list;
       this.journeyLeg= this.allRouteDetails[1].journeyLegs;
       console.log("here");
-      console.log(this.allRouteDetails);return;
+      console.log(this.allRouteDetails);//return;
    	})   
     
   	this.chkindex = 0;//this is set to add active class

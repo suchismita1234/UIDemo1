@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+//import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams, RequestMethod, ResponseContentType} from '@angular/http';
 
-import { Observable, of } from 'rxjs';
+import from 'rxjs/add/operator/map';
+//import 'rxjs/add/operator/map';
 import { catchError, map, tap } from 'rxjs/operators';
+
 
 interface routeArr {
    list : Object;
@@ -16,7 +19,7 @@ export class RouteService {
   
   private reqUrl = 'http://cmademostaginglb-1757996027.us-east-2.elb.amazonaws.com/';
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: Http ) { }
 
   public setSearchParams(loc){
     this.locationArr = loc;
@@ -31,11 +34,18 @@ export class RouteService {
   }
 
 //Fetch route detials from API using http call
-
-  getRouteDetails(orig, dest){
-      return this.http.get<routeArr>('https://my-json-server.typicode.com/suchismita1234/UIDemo1/db/');
-     
-     // return this.http.get<routeArr>(this.reqUrl+'journey/?origin=INDEL&destination=FRMRS&startDate=2018-05-29&containerType=20FT');
-     // return this.http.get<routeArr>(this.reqUrl+'location/');
-  }
-  }
+getRouteDetails(orig, dest){
+   
+   let headers = new Headers();
+   let qryParams = new URLSearchParams();
+   qryParams.append('origin',orig);
+   qryParams.append('destination',dest);
+   qryParams.append('startDate', '2018-05-29');
+   qryParams.append('containerType','20FT');   
+    
+   return this.http.post(this.reqUrl+'journey', qryParams , {headers: headers, params: qryParams});
+   
+   //return this.http.post('http://localhost/test/routeList.php', qryParams, {headers: headers, params: qryParams});
+   
+   }
+}
