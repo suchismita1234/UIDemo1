@@ -239,10 +239,10 @@ md-input-container ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   margin: 0;
     padding: 5px;
 }
-/* .switch-label:active {
-  font-weight: bold;
+.checked {
+  color: #fff;
 }
-
+/*
 .switch-label-off {
   padding-left: 2px;
 } */

@@ -87,7 +87,7 @@
                 <div>
                     <div class="col-md-3 col-md-offset-1 switch">
                         <input type="radio" [(ngModel)]="apiList.chargeType" class="switch-input" name="view" value="week" id="week" (change)="displayValue('chargeType','Prepaid');">
-                        <label for="week" class="switch-label switch-label-off">Prepaid</label>
+                        <label for="week" class="switch-label switch-label-off {{checked}}" id="prepaid_swtch">Prepaid</label>
                         <input type="radio" [(ngModel)]="apiList.chargeType" class="switch-input" name="view" value="month" id="month" (change)="displayValue('chargeType','Credit');">
                         <label for="month" class="switch-label switch-label-on">Credit</label>
                         <span class="switch-selection"></span>

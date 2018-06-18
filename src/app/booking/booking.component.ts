@@ -42,6 +42,7 @@ export class BookingComponent implements OnInit {
   public chargeType: string = 'Prepaid';
   public containerType: string = '20DR';
   public total: any;
+  public checked: string = 'checked';
 
   ngOnInit() {
     this.Route.currentJrnyLeg.subscribe(journeyArr => this.journeyArr = JSON.stringify(journeyArr));
@@ -201,6 +202,10 @@ export class BookingComponent implements OnInit {
     if (item === 'comodity')
       this.comodity = val;
     else if (item === 'chargeType') {
+      if(val === 'Prepaid')
+        this.checked = 'checked';
+      else
+      this.checked = '';
       this.chargeType = val;
       this.apiList.chargeType = val;
     }
