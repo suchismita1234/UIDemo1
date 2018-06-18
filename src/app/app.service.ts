@@ -10,11 +10,8 @@ export class AppService {
   constructor() { }
 
   getLocationList() {
-   
-   let headers = new Headers();
     
-   //return this.http.post(this.reqUrl+'journey', {headers: headers});
-   return this.http.post('http://localhost/test/routeList.php', qryParams, {headers: headers, params: qryParams});
-   
+        
+    
   }
 }

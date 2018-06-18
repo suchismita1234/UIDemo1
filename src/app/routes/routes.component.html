@@ -1,465 +1,74 @@
-    <style type="text/css">
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: calc(100% - 64px);
-        width: 75%;
-        position: absolute;
-        z-index: 0;
-        bottom: 0;
-        right:0;
-      }
-    </style>
-    <div class="container-fluid" style="position: relative; height: 100%;">
-        <div class="row" style="height: 100%">
-            <section style="position: fixed; width: 100%; height: 76px; z-index: 2; border-bottom: 8px solid #fff;">
-                <div class="panel panel-default" style="margin: 0">
-                    <div class="panel-body">
-                        <div class="col-lg-12">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                <a routerLink="/home" style="text-decoration: none;">
-                                    <h4 style="margin: 12px 0px;"><span style="color: #fff;background: #ff3d00; padding: 1px 1px 1px 5px;">MARSEILLE2</span><span style="color: #ff3d00;background: #fff; padding: 1px 5px 1px 1px; text-shadow: 0px 1px #ff3d00;">MANHATTAN</span></h4>
-                                    </a>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="col-sm-1 pull-right">
-                                        <button type="submit" (click)="findRoutes()" id="submit" class="btn btn-md btn-regular" title="Find Route Options"><i class="zmdi zmdi-boat"></i> <i class="glyphicon glyphicon-share-alt" style="font-size: 10px;"></i></button>
-                                    </div>
-                                    <div class="col-sm-3 pull-right">
-                                        <div class="wrap-input100">
-                                            <select class="input100" name="destination" #destination="ngModel" [(ngModel)]="locationObj.destination">
-                                                <option *ngFor="let dest of destinationList" 
-                                                [value]="locationObj.destination" id="this.locationObj.destination" >
-                                                    {{dest.name}}
-                                                </option>
-                                            </select>
-                                            <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
-                                            <span class="errorMsg">Enter value to proceed</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-1 text-center pull-right">
-                                        <button class="btn btn-regular btn-md"><i class="zmdi zmdi-swap"></i></button>
-                                    </div>
-                                    <div class="col-sm-3 pull-right">
-                                        <div class="wrap-input100">
-                                            <select class="input100" name="origin" #origin="ngModel" [(ngModel)]="locationObj.origin">
-                                                <option *ngFor="let origin of originList" 
-                                                [value]="locationObj.origin" >
-                                                    {{origin.name}}
-                                                </option>
-                                            </select>
-                                            <span class="focus-input100" data-placeholder="&#xf299;"></span>
-                                            <span class="errorMsg">Enter value to proceed</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
+<div class="container-fluid" style="position: relative; height: 100%;">
 
-            
-                <div class="col-sm-3 sidePanel col-xs-12 pull-left">
-                    
-
-                    <div class="card " *ngFor="let allRouteDetail of this.allRouteDetails;let routeIndex=index" (click)="displayJourneyLegs(routeIndex, allRouteDetail.journeyLegs)"> 
-             <!--This div needs to be added in case of ng-repeat -->
-                    <div [className]="this.chkindex == routeIndex ? 'card-title activator grey-text text-lighten-5 active' : 'card-title activator grey-text text-lighten-5'">Route {{routeIndex+1}}<i class="material-icons pull-right"><i class="zmdi zmdi-long-arrow-right"></i></i></div>
-                    <a class="btn-floating halfway-fab waves-effect waves-light red" title="Select Route"><i class="material-icons"><span class="glyphicon glyphicon-share-alt"></span></i></a>
-                    <div class="card-content">
-                        <ul class="list-group" id="listDetails">
-                            <li class="list-group-item"> {{allRouteDetail.routekey}}</li>
-                            <li class="list-group-item"> {{this.locationObj.origin}}</li>
-                            <li class="list-group-item"> {{this.locationObj.destination}}</li>
-                            <li class="list-group-item">  {{allRouteDetail.duration}} days 23hrs 16mins</li>
-                            <li class="list-group-item"> 23055kms</li>
-                            <li class="list-group-item cost"> &euro; {{allRouteDetail.price}}</li>
-                        </ul>
-                    </div>
-                    </div>
-                    
+    <div class="row" style="height: 100%">
+        <div id="top">
+            <div class="row" style="background: Black; width: 100%;">
+                <div class="col-xs-3">
+                    <a routerLink="" style="text-decoration: none;">
+                        <h4>
+                            <span
+                                style="color: #fff; background: #a01d0a; padding: 1px 1px 1px 5px;">Marseille2</span><span
+                                style="color: #a01d0a; background: #fff; padding: 1px 5px 1px 1px; text-shadow: 0px 1px #ff3d00;">Manhattan</span>
+                        </h4>
+                    </a>
                 </div>
-                <div class="col-sm-9 col-xs-12 pull-right" style="margin-top: 76px">
-                    <div class="capsuleWrapper row">
-                        <div class="paths roadPath" *ngFor="let journeyLeg of this.journeyLeg">
-                            <span class="orPortDate">{{journeyLeg.startDate}}</span>
-                            <i class="fa fa-clock-o pull-left" aria-hidden="true"></i>
-                            <span class="orPort">{{journeyLeg.origin}}</span>
-                            <i [className]="journeyLeg.mode === 'inland' ? 'zmdi zmdi-truck' : 'zmdi zmdi-boat'"></i>
-                            <span class="PortAArrival">{{journeyLeg.destination}}</span>
-                            <i class="fa fa-clock-o pull-right" aria-hidden="true"></i>
-                            <span class="PortADateArrival">{{journeyLeg.endDate}}</span>
-                            <span class="price">&euro; {{journeyLeg.price}}</span>
-                       </div>
+                <div class="col-xs-9">
+                    <div class="login">
+                        <a href="#"><i class="glyphicon glyphicon-folder-open"></i> <span
+                            class="hidden-xs text-uppercase"> Smart SI</span></a> <a href="#"><i
+                            class="glyphicon glyphicon-map-marker"></i> <span
+                            class="hidden-xs text-uppercase">Smart Tracking</span></a> <a
+                            href="#"><i class="glyphicon glyphicon-euro"></i> <span
+                            class="hidden-xs text-uppercase">Smart Payments</span></a> <a
+                            href="#"><i class="fa fa-sign-in"></i> <span
+                            class="hidden-xs text-uppercase">Sign in</span></a> <a href="#"><i
+                            class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign
+                                up</span></a>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="margin-bottom: 20px;">
-                                <ul class="nav nav-tabs custom-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#BookingHeader" class="waves-effect waves-light" aria-controls="BookingHeader" role="tab" data-toggle="tab">Booking Header</a></li>
-                                    <li role="presentation"><a href="#BookingParties" class="waves-effect waves-light" aria-controls="BookingParties" role="tab" data-toggle="tab">Booking Parties</a></li>
-                                    <li role="presentation"><a href="#CargoDetails" class="waves-effect waves-light" aria-controls="CargoDetails" role="tab" data-toggle="tab">Cargo Details</a></li>
-                                </ul>
-                                <div class="tab-content custom-tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="BookingHeader">
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="ContractNumber">Contract Number</label>
-                                                    <input type="text" class="form-control" id="ContractNumber" placeholder="Enter Contract Number">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="BookingOffice">Booking Office</label>
-                                                    <input type="text" class="form-control" id="BookingOffice" placeholder="Enter Booking Office Location">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="ShipperReference">Shipper Reference</label>
-                                                    <input type="text" class="form-control" id="ShipperReference" placeholder="Enter Shipper Reference">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="ForwarderReference">Forwarder Reference</label>
-                                                    <input type="text" class="form-control" id="ForwarderReference" placeholder="Enter Forwarder Reference">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="ChargeType">Charge Type</label>
-                                                    <select class="form-control">
-                                                        <option>Charge Type 1</option>
-                                                        <option>Charge Type 2</option>
-                                                        <option>Charge Type 3</option>
-                                                        <option>Charge Type 4</option>
-                                                        <option>Charge Type 5</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="FreightTerm">Freight Term</label>
-                                                    <select class="form-control">
-                                                        <option>Freight Term 1</option>
-                                                        <option>Freight Term 2</option>
-                                                        <option>Freight Term 3</option>
-                                                        <option>Freight Term 4</option>
-                                                        <option>Freight Term 5</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Payer">Payer</label>
-                                                    <select class="form-control">
-                                                        <option>Payer 1</option>
-                                                        <option>Payer 2</option>
-                                                        <option>Payer 3</option>
-                                                        <option>Payer 4</option>
-                                                        <option>Payer 5</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="Comments">Comments</label>
-                                                    <textarea class="form-control" rows="12"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="BookingParties">
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="panel panel-primary">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Shipper</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-group">
-                                                            <label for="Name">Name</label>
-                                                            <input type="text" class="form-control" id="Name" placeholder="Enter Name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="AddressLine1">Address Line 1</label>
-                                                            <input type="text" class="form-control" id="AddressLine1" placeholder="Enter Address Line 1">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="AddressLine2">Address Line 2</label>
-                                                            <input type="text" class="form-control" id="AddressLine2" placeholder="Enter Address Line 2">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="City">City</label>
-                                                            <select class="form-control">
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Country">Country</label>
-                                                            <select class="form-control">
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="PostalCode">Postal Code</label>
-                                                            <input type="text" class="form-control" id="PostalCode" placeholder="Enter Postal Code">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Email">Email</label>
-                                                            <input type="email" class="form-control" id="Email" placeholder="Enter Email">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Phone">Phone</label>
-                                                            <input type="text" class="form-control" id="Phone" placeholder="Enter Phone">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="panel panel-primary">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Consignee</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-group">
-                                                            <label for="Name">Name</label>
-                                                            <input type="text" class="form-control" id="Name" placeholder="Enter Name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="AddressLine1">Address Line 1</label>
-                                                            <input type="text" class="form-control" id="AddressLine1" placeholder="Enter Address Line 1">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="AddressLine2">Address Line 2</label>
-                                                            <input type="text" class="form-control" id="AddressLine2" placeholder="Enter Address Line 2">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="City">City</label>
-                                                            <select class="form-control">
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Country">Country</label>
-                                                            <select class="form-control">
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="PostalCode">Postal Code</label>
-                                                            <input type="text" class="form-control" id="PostalCode" placeholder="Enter Postal Code">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Email">Email</label>
-                                                            <input type="email" class="form-control" id="Email" placeholder="Enter Email">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Phone">Phone</label>
-                                                            <input type="text" class="form-control" id="Phone" placeholder="Enter Phone">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 col-sm-12">
-                                                <div class="panel panel-primary">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Forwarder</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-group">
-                                                            <label for="Name">Name</label>
-                                                            <input type="text" class="form-control" id="Name" placeholder="Enter Name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="AddressLine1">Address Line 1</label>
-                                                            <input type="text" class="form-control" id="AddressLine1" placeholder="Enter Address Line 1">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="AddressLine2">Address Line 2</label>
-                                                            <input type="text" class="form-control" id="AddressLine2" placeholder="Enter Address Line 2">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="City">City</label>
-                                                            <select class="form-control">
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                                <option>City Name</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Country">Country</label>
-                                                            <select class="form-control">
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                                <option>Country Name</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="PostalCode">Postal Code</label>
-                                                            <input type="text" class="form-control" id="PostalCode" placeholder="Enter Postal Code">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Email">Email</label>
-                                                            <input type="email" class="form-control" id="Email" placeholder="Enter Email">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="Phone">Phone</label>
-                                                            <input type="text" class="form-control" id="Phone" placeholder="Enter Phone">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="CargoDetails">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="min-width: 100px;">CTR Type</th>
-                                                        <th style="min-width: 75px;">Count</th>
-                                                        <th style="min-width: 160px;">Description</th>
-                                                        <th style="min-width: 160px;">HS Code</th>
-                                                        <th style="min-width: 190px;">Gross Wt.</th>
-                                                        <th style="min-width: 190px;">Gross Vol.</th>
-                                                        <th style="min-width: 85px;">Pkg Count</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <select class="form-control">
-                                                                <option selected>20 FT</option>
-                                                                <option>40 FT</option>
-                                                                <option>50 FT</option>
-                                                                <option>60 FT</option>
-                                                                <option>70 FT</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" class="form-control" placeholder="Enter Count" value="5">
-                                                        </td>
-                                                        <td>
-                                                            <textarea class="form-control" rows="1">Shirts</textarea>
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control">
-                                                                <option selected>CLOTHES</option>
-                                                                <option>SHOES</option>
-                                                                <option>HARDWARES</option>
-                                                                <option>AUTOMOBILES</option>
-                                                                <option>LIQUID</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <div style="display: flex">
-                                                                <input type="number" class="form-control" placeholder="Enter Count" value="1000">
-                                                                <select class="form-control" style="width: 100px;">
-                                                                    <option selected>KG</option>
-                                                                    <option>POUND</option>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div style="display: flex">
-                                                                <input type="number" class="form-control" placeholder="Enter Count" value="230">
-                                                                <select class="form-control">
-                                                                    <option>M1</option>
-                                                                    <option>M2</option>
-                                                                    <option selected>M3</option>
-                                                                    <option>M4</option>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" class="form-control" placeholder="Package Count" value="120">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <select class="form-control">
-                                                                <option>20 FT</option>
-                                                                <option selected>40 FT</option>
-                                                                <option>50 FT</option>
-                                                                <option>60 FT</option>
-                                                                <option>70 FT</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" class="form-control" placeholder="Enter Count" value="2">
-                                                        </td>
-                                                        <td>
-                                                            <textarea class="form-control" rows="1">Jeans</textarea>
-                                                        </td>
-                                                        <td>
-                                                            <select class="form-control">
-                                                                <option selected>CLOTHES</option>
-                                                                <option>SHOES</option>
-                                                                <option>HARDWARES</option>
-                                                                <option>AUTOMOBILES</option>
-                                                                <option>LIQUID</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <div style="display: flex">
-                                                                <input type="number" class="form-control" placeholder="Enter Count" value="2000">
-                                                                <select class="form-control" style="width: 100px;">
-                                                                    <option selected>KG</option>
-                                                                    <option>POUND</option>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div style="display: flex">
-                                                                <input type="number" class="form-control" placeholder="Enter Count" value="460">
-                                                                <select class="form-control">
-                                                                    <option>M1</option>
-                                                                    <option>M2</option>
-                                                                    <option selected>M3</option>
-                                                                    <option>M4</option>
-                                                                </select>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <input type="number" class="form-control" placeholder="Package Count" value="240">
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <a class="btn-floating waves-effect waves-light" title="Add Row">
-                                                    <i class="material-icons"><span class="glyphicon glyphicon-plus"></span></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            
+            </div>
         </div>
+        <div class="col-sm-3 sidePanel col-xs-12 pull-left">
+            <div class="panel-group my-panel"
+                *ngFor="let allRouteDetail of allRouteDetails;let routeIndex=index"
+                (click)="displayJourneyLegs(routeIndex, allRouteDetail.journeyLegs, allRouteDetail.routekey)">
+                <div class="panel panel-default panel-red">
+                    <div class="panel-heading">{{allRouteDetail.journeyLegs[1].vessel}}
+                        - {{allRouteDetail.journeyLegs[1].voyage}}</div>
+                    <div class="panel-body">
+                        <p>
+                            <span class="myred">{{allRouteDetail.duration}}</span> days
+                            transit time
+                        </p>
+                        <p>
+                            <span class="myred">&euro;{{allRouteDetail.price}}</span> for one
+                            20DR86 container
+                        </p>
+                    </div>
+                    <div class="panel-footer"><button (click)="displayJourneyLegs(routeIndex, allRouteDetail.journeyLegs, allRouteDetail.routekey)"><i class="glyphicon glyphicon-thumbs-up"></i></button></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-9 col-xs-12 pull-right">
+            <div class="capsuleWrapper row">
+                <div class="paths roadPath"
+                    *ngFor="let jLeg of journeyLeg; let i = index;">
+                    <span class="orPortDate">{{jLeg.startDate  | date:"dd MMM yyyy"}}</span> <i
+                        class="fa fa-clock-o pull-left" aria-hidden="true"></i> <span
+                        class="orPort">{{jLeg.originName}}</span> <i
+                        [className]="jLeg.mode === 'inland' ? 'zmdi zmdi-truck' : 'zmdi zmdi-boat'"></i>
+                    <span class="desPort">{{jLeg.destinationName}}</span> <i
+                        class="fa fa-clock-o pull-right" aria-hidden="true"></i> <span
+                        class="PortADateArrival">{{jLeg.endDate  | date:"dd MMM yyyy"}}</span> <span
+                        class="price"> {{jLeg.price | currency:"EUR"}}</span>
+                </div>
+            </div>
+
+            <app-booking></app-booking>
+
+        </div>
+
     </div>
+</div>

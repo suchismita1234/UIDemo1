@@ -13,11 +13,13 @@ import {Router} from '@angular/router';
 export class HomeComponent implements OnInit {
 	public origin1: string;
 	public dest: string;
+	public startDate: Date;
 	
 	location: any;
 	originList: {};
 	destinationList: {};
-    cacheLocArr: {};
+  //message: string;
+	 cacheLocArr: {};
 
 	constructor(
 	private router: Router,
@@ -29,11 +31,9 @@ export class HomeComponent implements OnInit {
 	public message = "hello";
 
 	ngOnInit() {	
-	  	this.originList = [{id:"INDEL", name:"Delhi"}, 
-            {id:"INCCU", name:"Kolkata"}];
+	  	this.originList = [{id:"FRMRS", name:"Marseille"}];
 
-    	this.destinationList = [{id:"FRLIO", name:"Lyon"}, 
-            {id:"FRMRS", name:"Marseille"}];
+    	this.destinationList = [{id:"USMNH", name:"Manhattan"}];
  		
  		//cacheLocArr = this.appService.getLocationList();
  		
@@ -42,19 +42,11 @@ export class HomeComponent implements OnInit {
     onSubmit(event) {
      	this.origin1 = this.location.origin;
         this.dest =  this.location.destination;
-              
-        
-
-        debugger;
-		console.log("setting search params");
-        this.Route.setSearchParams(this.location);
-        //this.Route.setRouteDetails(this.Route.getRouteDetails(this.origin1, this.dest);
-
+        this.Route.setSearchParams(this.location, this.startDate);
         this.router.navigate(['/routes']);
     }
 
 	  getRoutes() {
 	  	console.log("here");
-	  	//console.log(ngForm.origin);
 	  }
 }

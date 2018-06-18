@@ -1,0 +1,78 @@
+.my-wrapper {
+		border-radius: 4px;
+		background-color: White;
+		padding: 20px;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+		position: relative;
+}
+#top .social {
+  float: left;
+  text-align: right;
+  margin-top: 6px;
+}
+#top .social a {
+  color: #999999;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  line-height: 20px;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: bottom;
+}
+#top .social a:hover {
+  color: #fff;
+}
+#top .social a:hover.facebook {
+  background-color: #4460ae;
+}
+#top .social a:hover.gplus {
+  background-color: #c21f25;
+}
+#top .social a:hover.twitter {
+  background-color: #3cf;
+}
+#top .social a:hover.instagram {
+  background-color: #cd4378;
+}
+#top .social a:hover.email {
+  background-color: #4a7f45;
+}
+#top .login {
+  float: right;
+  margin-top: 6px;
+}
+#top .login a {
+  font-size: 12px;
+  color: #eeeeee;
+  margin-right: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+}
+@media (max-width: 767px) {
+  #top .login {
+    float: left;
+  }
+}
+#top.light {
+  background: #fff;
+  color: #999999;
+  border-bottom: solid 1px #eeeeee;
+}
+#top.light .login a {
+  color: #555555;
+}
+
+
+.mat-input-element{
+  color: #a13e1a;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label :hover {
+  color: #a13e1a !important;
+}
+::ng-deep .mat-input-underline{
+  border-bottom: 1px solid red !important;
+}

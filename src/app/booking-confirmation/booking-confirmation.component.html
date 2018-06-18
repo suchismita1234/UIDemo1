@@ -1,0 +1,281 @@
+<body class="confirmBookingWallpaper">
+        <div class="container-fluid" style="position: relative; height: 100%;">
+            <div class="row" style="height: 100%">
+                <section class="headerBar">
+                    <div id="top">
+                        <div class="row" style="background: Black; width: 100%;">
+                            <div class="col-xs-3">
+                                <a routerLink="" style="text-decoration: none;">
+                                    <h4>
+                                        <span style="color: #fff; background: #a01d0a; padding: 1px 1px 1px 5px;">Marseille2</span>
+                                        <span style="color: #a01d0a; background: #fff; padding: 1px 5px 1px 1px; text-shadow: 0px 1px #ff3d00;">Manhattan</span>
+                                    </h4>
+                                </a>
+                            </div>
+                            <div class="col-xs-9">
+                                <div class="login">
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                        <span class="hidden-xs text-uppercase"> Smart SI</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-map-marker"></i>
+                                        <span class="hidden-xs text-uppercase">Smart Tracking</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-euro"></i>
+                                        <span class="hidden-xs text-uppercase">Smart Payments</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-sign-in"></i>
+                                        <span class="hidden-xs text-uppercase">Sign in</span>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fa fa-user"></i>
+                                        <span class="hidden-xs text-uppercase">Sign up
+                                        </span>
+                                    </a>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <div class="col-lg-12 form-horizontal formBody">
+                    <div class="row" style="display: flex; align-items: center;">
+                        <div class="col-lg-4">
+                            <h3 class="thick">Booking Confirmation</h3>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="btn-toolbar pull-right" role="toolbar" aria-label="...">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a href="#" class="btn btn-regular-dark waves-effect waves-light" title="Edit Details">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a href="javascript:void(0);" (click)="onPrint()" class="btn btn-regular-dark waves-effect waves-light" title="Print Details">
+                                        <span class="glyphicon glyphicon-print"></span>
+                                    </a>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a href="#" class="btn btn-regular-dark waves-effect waves-light" title="Save As PDF">
+                                        <i class="fa fa-file" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a href="#" class="btn btn-regular-dark waves-effect waves-light" title="Send To Email">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row printView">
+                        <div class="col-lg-5 col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label for="BookingNumber" class="col-xs-6 control-label">Booking Number:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="BookingNumber">{{this.bookingDetails[0].bookingReference}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="Shipper" class="col-xs-6 control-label">Shipper:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="Shipper">{{this.bookingDetails[0].partyList[0].name}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="ShipperAddress" class="col-xs-6 control-label">Shipper Address:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="BookingAddress">{{this.bookingDetails[0].partyList[0].addressLine1}}
+                                        <br>{{this.bookingDetails[0].partyList[0].addressLine2}}
+                                        <br>{{this.bookingDetails[0].partyList[0].city}}
+                                        <br>{{this.bookingDetails[0].partyList[0].country}} {{this.bookingDetails[0].partyList[0].postalCode}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="Consignee" class="col-xs-6 control-label">Consignee:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="Consignee">{{this.bookingDetails[0].partyList[1].name}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="ConsigneeAddress" class="col-xs-6 control-label">Consignee Address:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="BookingAddress">{{this.bookingDetails[0].partyList[1].addressLine1}}
+                                        <br>{{this.bookingDetails[0].partyList[1].addressLine2}}
+                                        <br>{{this.bookingDetails[0].partyList[1].city}}
+                                        <br>{{this.bookingDetails[0].partyList[1].country}} {{this.bookingDetails[0].partyList[1].postalCode}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="Vessel" class="col-xs-6 control-label">Vessel/Voyage:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="Vessel">{{this.bookingDetails[0].bookingLegList[1].vessel}} / {{this.bookingDetails[0].bookingLegList[1].voyage}}</label>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-5 col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label for="PortOfLoading" class="col-xs-6 control-label">Port Of Loading:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="PortOfLoading">{{this.bookingDetails[0].bookingLegList[1].originName}}</label>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="PortOfDischarge" class="col-xs-6 control-label">Port Of Discharge:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="PortOfDischarge">{{this.bookingDetails[0].bookingLegList[1].destinationName}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="FinalPlaceOfDelivery" class="col-xs-6 control-label">Final Place Of Delivery:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="FinalPlaceOfDelivery">{{this.bookingDetails[0].bookingLegList[2].destinationName}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="CutOffDateTime" class="col-xs-6 control-label">Cut-Off Date</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="CutOffDateTime">{{this.bookingDetails[0].bookingLegList[1].cutoffDate | date:"dd MMM yyyy"}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="CutOffDateTime" class="col-xs-6 control-label">ETD:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="CutOffDateTime">{{this.bookingDetails[0].bookingLegList[0].startDate | date:"dd MMM yyyy"}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="CutOffDateTime" class="col-xs-6 control-label">ETA:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="CutOffDateTime">{{this.bookingDetails[0].bookingLegList[2].endDate | date:"dd MMM yyyy"}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="Quantity" class="col-xs-6 control-label">Quantity:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="Quantity">{{this.bookingDetails[0].cargoList[0].containerCount}} x {{this.bookingDetails[0].cargoList[0].containerType}}</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="Commodity" class="col-xs-6 control-label">Commodity:</label>
+                                
+                                    <label class="col-xs-6 control-label"  id="Commodity">{{this.bookingDetails[0].cargoList[0].hsCode}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container-fluid" id="printThis" style="display:none">
+            <div class="col-lg-12 form-horizontal formBody">
+                <div class="row" style="display: flex; align-items: center;">
+                    <div class="col-lg-4">
+                        <h3>Booking Confirmation</h3>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="btn-toolbar pull-right" role="toolbar" aria-label="...">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href="#" class="btn btn-regular-dark waves-effect waves-light" title="Edit Details">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href="javascript:void(0);" (click)="onPrint()" class="btn btn-regular-dark waves-effect waves-light" title="Print Details">
+                                    <span class="glyphicon glyphicon-print"></span>
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href="#" class="btn btn-regular-dark waves-effect waves-light" title="Save As PDF">
+                                    <i class="fa fa-file" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href="#" class="btn btn-regular-dark waves-effect waves-light" title="Send To Email">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row printView">
+                    <div class="col-lg-5 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="BookingNumber" class="col-xs-6 control-label">Booking Number:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="BookingNumber">{{this.bookingDetails[0].bookingReference}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="Shipper" class="col-xs-6 control-label">Shipper:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="Shipper">{{this.bookingDetails[0].partyList[0].name}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="ShipperAddress" class="col-xs-6 control-label">Shipper Address:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="BookingAddress">{{this.bookingDetails[0].partyList[0].addressLine1}}
+                                    <br>{{this.bookingDetails[0].partyList[0].addressLine2}}
+                                    <br>{{this.bookingDetails[0].partyList[0].city}}
+                                    <br>{{this.bookingDetails[0].partyList[0].country}} {{this.bookingDetails[0].partyList[0].postalCode}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="Consignee" class="col-xs-6 control-label">Consignee:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="Consignee">{{this.bookingDetails[0].partyList[1].name}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="ConsigneeAddress" class="col-xs-6 control-label">Consignee Address:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="BookingAddress">{{this.bookingDetails[0].partyList[1].addressLine1}}
+                                    <br>{{this.bookingDetails[0].partyList[1].addressLine2}}
+                                    <br>{{this.bookingDetails[0].partyList[1].city}}
+                                    <br>{{this.bookingDetails[0].partyList[1].country}} {{this.bookingDetails[0].partyList[1].postalCode}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="Vessel" class="col-xs-6 control-label">Vessel/Voyage:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="Vessel">{{this.bookingDetails[0].bookingLegList[1].vessel}} / {{this.bookingDetails[0].bookingLegList[1].voyage}}</label>
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-5 col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <label for="PortOfLoading" class="col-xs-6 control-label">Port Of Loading:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="PortOfLoading">{{this.bookingDetails[0].bookingLegList[1].originName}}</label>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="PortOfDischarge" class="col-xs-6 control-label">Port Of Discharge:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="PortOfDischarge">{{this.bookingDetails[0].bookingLegList[1].destinationName}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="FinalPlaceOfDelivery" class="col-xs-6 control-label">Final Place Of Delivery:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="FinalPlaceOfDelivery">{{this.bookingDetails[0].bookingLegList[2].destinationName}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="CutOffDateTime" class="col-xs-6 control-label">Cut-Off Date</label>
+                            
+                                <label class="col-xs-6 control-label"  id="CutOffDateTime">{{this.bookingDetails[0].bookingLegList[1].cutoffDate | date:"dd MMM yyyy"}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="CutOffDateTime" class="col-xs-6 control-label">ETD:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="CutOffDateTime">{{this.bookingDetails[0].bookingLegList[0].startDate | date:"dd MMM yyyy"}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="CutOffDateTime" class="col-xs-6 control-label">ETA:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="CutOffDateTime">{{this.bookingDetails[0].bookingLegList[2].endDate | date:"dd MMM yyyy"}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="Quantity" class="col-xs-6 control-label">Quantity:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="Quantity">{{this.bookingDetails[0].cargoList[0].containerCount}} x {{this.bookingDetails[0].cargoList[0].containerType}}</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="Commodity" class="col-xs-6 control-label">Commodity:</label>
+                            
+                                <label class="col-xs-6 control-label"  id="Commodity">{{this.bookingDetails[0].cargoList[0].hsCode}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

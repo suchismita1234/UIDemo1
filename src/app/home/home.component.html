@@ -1,84 +1,108 @@
-<style>
-.input100{
-	color:#ccc;
-}
-</style>
 <div class="container-fluid">
 	<div class="row coverScreen">
 		<div id="intro">
-	        <div class="backDrop"></div>
-	        <div class="intro-body">
-	            <div class="container">
-	                <div class="row">
-	                    <div class="col-md-10 col-md-offset-1" style="margin-top: 15%">
-	                    	<h1>MARSEILLE2<span class="brand-heading">MANHATTEN</span></h1>
-	                    	<p class="intro-text">Shipping Simplified At A Click</p>
-	                        <!--Search form -->
-	                        <form #locationForm="ngForm" (ngSubmit)="onSubmit($event)" >
-	                        <div class="row">
-	                            <div class="col-md-5">
-	                                <div class="wrap-input100 form-group">
-	                                    <!--input type="text" class="input100" required name="origin" id='origin' #origin="ngModel" [(ngModel)]="location.origin" placeholder="Enter Origin"-->
+			<div class="backDrop"></div>
+			<div class="intro-body">
 
-            								<select class="input100" name="origin" #origin="ngModel" [(ngModel)]="location.origin">
-	                                    		<option *ngFor="let origin of originList" 
-	                                    		[value]="origin.id" >
-	                                    			{{origin.name}}
-	                                    		</option>
-											</select>
+				<div id="top">
+					<div class="container">
+						<div class="row">
 
-	                                        <span class="focus-input100" data-placeholder="&#xf299;"></span>
-	                                        <span class="errorMsg">Enter value to proceed</span>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-5 form-group">
-	                                <div class="wrap-input100">
-	                                        <!--input type="text" class="input100" name="destination" id="destination" #destination="ngModel" [(ngModel)]="location.destination" placeholder="Enter destination" required-->
-	                     	<select class="input100" name="destination" #destination="ngModel" [(ngModel)]="location.destination" >
-	                                    		<option *ngFor="let dest of destinationList" 
-	                                    		[value]="dest.id" >
-	                                    			{{dest.name}}
-	                                    		</option>
-											</select>
-	                                        <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
-	                                        <span class="errorMsg">Enter value to proceed</span>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-1 form-group">
-	                            <!--routerLink="/routes" -->
-	                                <button  type="submit"  id="findOptions" class="btn btn-lg btn-regular">
-	                                <i class="zmdi zmdi-boat" style="font-size"></i></button>
-	                            </div>
-	                        </div>
-	                    </form>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
+							<div class="col-xs-12">
+								<div class="social">
+									<a href="#" class="external facebook"
+										data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="external gplus" data-animate-hover="pulse"><i
+										class="fa fa-google-plus"></i></a> <a href="#"
+										class="external twitter" data-animate-hover="pulse"><i
+										class="fa fa-twitter"></i></a> <a href="#" class="email"
+										data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+								</div>
 
-<div class="col-sm-6 col-sm-offset-3 bottomPanel">
-                <div class="row">
-                    <div class="panel">
-                        <div class="IconSpan" style="background-color:#d27502">
-                            <i class="zmdi zmdi-navigation"></i>
-                        </div>
-                        <div class="IconDescSpan">
-                            <p>SMART TRACKING</p>
-                            <hr>
-                            <span>Coming Soon <i class="fa fa-spinner loadingSpeedIcon" aria-hidden="true"></i></span>
-                        </div>
-                        <div class="IconSpan" style="background-color: #0298d2">
-                            <i class="fa fa-ship" aria-hidden="true"></i>
-                        </div>
-                        <div class="IconDescSpan">
-                            <p>SMART SI</p>
-                            <hr>
-                            <span>Coming Soon <i class="fa fa-spinner loadingSpeedIcon" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+								<div class="login">
+									<a href="#"><i class="glyphicon glyphicon-folder-open"></i>
+										<span class="hidden-xs text-uppercase"> Smart SI</span></a> <a
+										href="#"><i class="glyphicon glyphicon-map-marker"></i> <span
+										class="hidden-xs text-uppercase">Smart Tracking</span></a> <a
+										href="#"><i class="glyphicon glyphicon-euro"></i> <span
+										class="hidden-xs text-uppercase">Smart Payments</span></a> <a
+										href="#"><i class="fa fa-sign-in"></i> <span
+										class="hidden-xs text-uppercase">Sign in</span></a> <a href="#"><i
+										class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign
+											up</span></a>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1" style="margin-top: 10%">
+							<h1>
+								<span class="brand-heading-white">MARSEILLE2</span><span
+									class="brand-heading">MANHATTAN</span>
+							</h1>
+							<p class="intro-text">Anyone | Anywhere | Anytime</p>
+							<!--Search form -->
+							<form #locationForm="ngForm" (ngSubmit)="onSubmit($event)">
+								<div class="row my-wrapper" style="margin-top: 0%">
+									<div class="col-md-3">
+										<div class="wrap-input100 form-group">
+											<select class="input100" name="origin" #origin="ngModel"
+												[(ngModel)]="location.origin">
+												<option *ngFor="let origin of originList"
+													[value]="origin.id">{{origin.name}}</option>
+											</select> <span class="focus-input100" data-placeholder="&#xf299;"></span>
+											<span class="errorMsg">Enter value to proceed</span>
+										</div>
+									</div>
+									<div class="col-md-3 form-group">
+										<div class="wrap-input100">
+											<!--input type="text" class="input100" name="destination" id="destination" #destination="ngModel" [(ngModel)]="location.destination" placeholder="Enter destination" required-->
+											<select class="input100" name="destination"
+												[(ngModel)]="location.destination">
+												<option *ngFor="let dest of destinationList"
+													[value]="dest.id">{{dest.name}}</option>
+											</select> <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
+											<span class="errorMsg">Enter value to proceed</span>
+										</div>
+									</div>
+									<div class="col-md-3 form-group">
+										<div class="">
+												<mat-form-field>
+												<input matInput [matDatepicker]="picker" placeholder="Choose a date" name="startDate" id="startDate" [(ngModel)]="startDate">
+													<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+													<mat-datepicker #picker></mat-datepicker>
+													</mat-form-field>
+											<!--input class="input100" type="date" name="startDate" 
+											id="startDate" [(ngModel)]="startDate" 
+											placeholder="MM/DD/YYYY" required>
+											<span class="errorMsg">Enter value to proceed</span-->
+										</div>
+									</div>
+									<div class="col-md-1 form-group">
+										<!--routerLink="/routes" -->
+										<button type="submit" id="findOptions"
+											class="btn btn-lg btn-regular">
+											<i class="glyphicon glyphicon-search" style="color: #a01d0a;"></i>
+										</button>
+									</div>
+									<div class="col-md-1 form-group">
+										<!--routerLink="/routes" -->
+										<button type="reset" id="findOptions"
+											class="btn btn-lg btn-regular">
+											<i class="glyphicon glyphicon-erase" style="color: #a01d0a;"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 </div>
